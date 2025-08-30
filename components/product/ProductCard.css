@@ -1,0 +1,122 @@
+.product-card {
+  background: #fff;
+  border-radius: 1rem;
+  width: 30%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem;
+  transition: box-shadow 0.2s;
+}
+.product-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+.product-card-img-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.product-card-img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  background: #f7f7f7;
+}
+.product-card-logo {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+.product-card-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: #111;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 0.3em 0.7em;
+  border-radius: 0.5em;
+  font-weight: 500;
+}
+.product-card-content {
+  width: 100%;
+  text-align: center;
+}
+.product-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+.product-card-brand {
+  font-size: 0.95rem;
+  color: #888;
+  margin-bottom: 0.3rem;
+}
+.product-card-rating {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #f5b301;
+}
+.star {
+  color: #ddd;
+  font-size: 1rem;
+}
+.star.filled {
+  color: #f5b301;
+}
+.product-card-rating-value {
+  color: #222;
+  margin-left: 0.3em;
+  font-weight: 500;
+}
+.product-card-reviews {
+  color: #888;
+  margin-left: 0.3em;
+}
+.product-card-prices {
+  margin-bottom: 0.7rem;
+}
+.product-card-price {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #222;
+  margin-right: 0.5em;
+}
+.product-card-oldprice {
+  font-size: 1rem;
+  color: #888;
+  text-decoration: line-through;
+}
+.product-card-btn {
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 0.5em;
+  padding: 0.7em 1.2em;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5em;
+  transition: background 0.2s;
+}
+.product-card-btn:hover {
+  background: #222;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}

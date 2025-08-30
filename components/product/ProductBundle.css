@@ -1,0 +1,111 @@
+.bundle-offer {
+  background: #ffffff;
+  border: 2.5px solid transparent;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1.5rem 1.2rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.bundle-offer:hover {
+  border-color: #222;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+.bundle-offer.selected {
+  border-color: #222;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+.bundle-offer:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.bundle-offer .bundle-limited {
+  position: absolute;
+  top: -18px;
+  right: 24px;
+  background: #222;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.3em 1em;
+  border-radius: 8px 8px 8px 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: 2.5px solid #222;
+}
+.bundle-offer .bundle-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.simple-offer {
+  background: #fff;
+  border: 2.5px solid #222;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 1.5rem 1.2rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bundle-offer .bundle-price {
+  margin-left: auto;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.bundle-offer .bundle-limited {
+  position: absolute;
+  top: -16px;
+  right: 18px;
+  background: #222;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.3em 1em;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.bundle-offer .bundle-gifts {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+.bundle-offer .bundle-gift {
+  text-align: center;
+  font-size: 0.95rem;
+}
+.bundle-offer .bundle-gift-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 0.5em;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+.bundle-offer .bundle-gift-oldprice {
+  display: block;
+  font-size: 0.85rem;
+  color: #888;
+  text-decoration: line-through;
+  margin-bottom: 0.2em;
+}
+.bundle-offer .bundle-gift-value {
+  font-weight: bold;
+  background: #111;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.3em 0.8em;
+  margin-bottom: 0.7em;
+  display: inline-block;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.bundle-gift-value:hover {
+  background: #222;
+}

@@ -1,6 +1,118 @@
+@keyframes badge-bounce {
+	0% { transform: scale(1); }
+	30% { transform: scale(1.3); }
+	60% { transform: scale(0.9); }
+	100% { transform: scale(1); }
+}
 /* app/globals.css */
 :root { color-scheme: light dark; }
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; }
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	background: #f6f7fb;
+	color: #222;
+	min-height: 100vh;
+}
 img, svg { display: block; max-width: 100%; height: auto; }
-button { cursor: pointer; }
+
+/* BannerScroller animation */
+.banner-scroll-wrapper {
+	position: relative;
+	width: 100vw;
+	overflow: hidden;
+	background-color: #222;
+	height: 40px;
+}
+.banner-scroll-content {
+	color: #fff;
+	display: inline-block;
+	white-space: nowrap;
+	min-width: 200vw;
+	animation: banner-scroll 30s linear infinite;
+}
+
+@keyframes banner-scroll {
+	0% {
+		transform: translateX(0);
+	}
+	50% {
+		transform: translateX(-50vw);
+	}
+}
+
+button {
+	font-family: inherit;
+	border-radius: 0.5em;
+	border: none;
+	background: #111;
+	color: #fff;
+	padding: 0.7em 1.2em;
+	font-size: 1rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+button:hover {
+	background: #222;
+}
+
+a {
+	color: #111;
+	text-decoration: none;
+	transition: color 0.2s;
+}
+a:hover {
+	color: #0070f3;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: inherit;
+	font-weight: 700;
+	color: #222;
+	margin-top: 0;
+}
+
+main {
+	background: #fff;
+	border-radius: 1.2rem;
+	box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+	padding: 2rem;
+}
+
+
+.product-cart-qty-btn{
+    font-size: 1rem;
+    padding: 0.3em 0.7em;
+    border-radius: 6px;
+    color: #111;
+    border: 1px solid #cccccc;
+    background: #d5dcfe;
+    cursor: pointer;
+    font-weight: 500;
+    margin: 0 0.2em;
+}
+.product-cart-qty-btn:hover {
+    background: #e5e7eb;
+}
+
+.product-cart-remove {
+  background: #ffe5e5;
+  color: #c00;
+  border: 1px solid #fcc;
+  border-radius: 6px;
+  padding: 0.3em 0.7em;
+  cursor: pointer;
+  font-weight: 500;
+}
+.product-cart-remove:hover {
+  background: #ffd6d6;
+}
+
+.cart-option {
+  display: flex;
+  flex-direction: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}

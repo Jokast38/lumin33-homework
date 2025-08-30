@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getHomeSections } from '@/lib/supabase';
+import ProductGrid from '@/components/product/ProductGrid';
 
 export default async function HomePage() {
   const sections = await getHomeSections();
@@ -17,8 +18,8 @@ export default async function HomePage() {
                 <h1 className="text-4xl font-bold mb-2">{s.payload.title}</h1>
                 <p className="text-gray-500 mb-4">{s.payload.subtitle}</p>
                 {s.payload.cta && (
-                  <Link className="inline-block rounded-lg border px-4 py-2" href={s.payload.cta?.href}>
-                    {s.payload.cta?.label}
+                  <Link className="inline-block rounded-lg border px-4 py-2" href={s.payload.cta.href}>
+                    {s.payload.cta.label}
                   </Link>
                 )}
               </div>
@@ -30,15 +31,7 @@ export default async function HomePage() {
           return (
             <section key={i}>
               <h2 className="text-2xl font-semibold mb-4">{s.payload.title}</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {s.payload.products?.map((p: any) => (
-                  <article key={p.id} className="border rounded-xl p-2">
-                    <img src={p.images?.[0]} alt={p.name} className="rounded-lg mb-2" />
-                    <div className="text-sm">{p.name}</div>
-                    <div className="font-semibold">{p.price} €</div>
-                  </article>
-                ))}
-              </div>
+                <ProductGrid products={s.payload.products ?? []} />
             </section>
           );
         }
