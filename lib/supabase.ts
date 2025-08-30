@@ -50,7 +50,7 @@ export type Offer = {
 
 export type Review = { author: string; rating: number; comment: string };
 
-const MOCK_PRODUCT: Product = {
+export const MOCK_PRODUCT: Product = {
   id: 'p1',
   slug: 'apple-watch-ultra-2',
   name: 'Apple Watch Ultra 2',

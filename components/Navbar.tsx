@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import CartIcon from "@/components/cart/CartIcon";
+import { MOCK_PRODUCT } from "@/lib/supabase";
 import "./Navbar.css";
 
 export default function Navbar() {
@@ -13,7 +14,7 @@ export default function Navbar() {
       </div>
       <div className="navbar-logo" >
         <Link href="/fr/home">
-          <img src="/logo.svg" alt="Logo" className="navbar-logo-img" />
+          <img src={MOCK_PRODUCT.logo} alt="Logo" className="navbar-logo-img" />
         </Link>
         LUMIN 33
       </div>
