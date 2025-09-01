@@ -1,8 +1,8 @@
 'use client';
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
-export type Item = { id: string; name: string; price: number; qty: number };
-type AddableItem = { id: string; name: string; price: number; qty?: number }; // entrée plus souple
+export type Item = { id: string; name: string; price: number; qty: number; images?: string[] };
+type AddableItem = { id: string; name: string; price: number; qty?: number; images?: string[] }; // entrée plus souple
 
 type CartCtx = {
   isCartReady: boolean;

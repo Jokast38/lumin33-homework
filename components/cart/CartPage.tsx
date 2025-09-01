@@ -4,11 +4,12 @@ import { useCart } from './CartProvider';
 export default function CartPage() {
   const { items, addItem, removeItem, clear } = useCart();
   const total = items.reduce((sum, i) => sum + i.price * i.qty, 0);
+  const router = require('next/navigation').useRouter();
   return (
-  <main className="cart-main">
-  <h1 className="cart-title">Mon Panier</h1>
+    <main className="cart-main">
+      <h1 className="cart-title">Mon Panier</h1>
       {items.length === 0 ? (
-  <div className="cart-empty">Votre panier est vide.</div>
+        <div className="cart-empty">Votre panier est vide.</div>
       ) : (
         <>
           <ul className="cart-list" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
@@ -32,9 +33,9 @@ export default function CartPage() {
           <div className="cart-total">Total : {total.toFixed(2)} €</div>
         </>
       )}
-  <div className="cart-option">
-  <button className="cart-remove-btn" onClick={clear}>Vider le panier</button>
-  <button className="cart-order-btn">Commander</button>
+      <div className="cart-option">
+        <button className="cart-remove-btn" onClick={clear}>Vider le panier</button>
+        <button className="cart-order-btn" onClick={() => router.push('/checkout')}>Commander</button>
       </div>
     </main>
   );

@@ -182,14 +182,14 @@ export default function ProductPageClient({
                       className="product-offer-btn px-4 py-2 rounded-lg bg-black text-white hover:bg-gray-800"
                       onClick={() => {
                         const event_id = crypto.randomUUID();
-                        addItem({ id: 'apple-watch-ultra-2', name, price, qty: 1 });
+                        addItem({ id: 'apple-watch-ultra-2', name, price, qty: 1, images });
                         trackPixel('AddToCart', { value: price, currency: 'EUR' }, event_id);
                         fetch('/api/meta/track', {
                           method: 'POST',
                           headers: { 'content-type': 'application/json' },
                           body: JSON.stringify({
                             event: 'AddToCart', event_id, value: price, currency: 'EUR',
-                            contents: [{ id: 'apple-watch-ultra-2', quantity: 1, item_price: price }]
+                            contents: [{ id: 'apple-watch-ultra-2', quantity: 1, item_price: price, images }]
                           })
                         });
                       }}
