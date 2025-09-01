@@ -50,28 +50,115 @@ export type Offer = {
 
 export type Review = { author: string; rating: number; comment: string };
 
-export const MOCK_PRODUCT: Product = {
-  id: 'p1',
-  slug: 'apple-watch-ultra-2',
-  name: 'Apple Watch Ultra 2',
-  brand: 'Apple',
-  logo: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg',
-  price: 899,
-  oldPrice: 999,
-  price_flash: 899,
-  flash_ends_at: new Date(Date.now() + 48 * 3600 * 1000).toISOString(),
-  images: [
-    'https://m.media-amazon.com/images/I/61HebwRVKVL._AC_SL1000_.jpg',
-    'https://m.media-amazon.com/images/I/51MtHu5q4TL._AC_SL1000_.jpg',
-  ],
-  rating: 4.7,
-  reviews: [
-    { author: 'Léa', rating: 5, comment: 'Autonomie et GPS au top.' },
-    { author: 'Max', rating: 4, comment: 'Très robuste, un peu chère.' },
-    { author: 'Nina', rating: 5, comment: 'Parfaite pour le trail.' },
-  ],
-  options: { bandColor: ['noir', 'sable'] },
-};
+
+export const MOCK_PRODUCTS: Product[] = [
+  {
+    id: 'aw-ultra-2',
+    slug: 'apple-watch-ultra-2',
+    name: 'Apple Watch Ultra 2',
+    brand: 'Apple',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg',
+    price: 899,
+    oldPrice: 999,
+    price_flash: 899,
+    flash_ends_at: new Date(Date.now() + 48 * 3600 * 1000).toISOString(),
+    images: [
+      'https://m.media-amazon.com/images/I/61HebwRVKVL._AC_SL1000_.jpg',
+      'https://m.media-amazon.com/images/I/51MtHu5q4TL._AC_SL1000_.jpg',
+    ],
+    rating: 4.7,
+    reviews: [
+      { author: 'Léa', rating: 5, comment: 'Autonomie et GPS au top.' },
+      { author: 'Max', rating: 4, comment: 'Très robuste, un peu chère.' },
+      { author: 'Nina', rating: 5, comment: 'Parfaite pour le trail.' },
+    ],
+    options: { bandColor: ['noir', 'sable'] },
+  },
+  {
+    id: 'aw-series-9',
+    slug: 'apple-watch-series-9',
+    name: 'Apple Watch Series 9',
+    brand: 'Apple',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg',
+    price: 499,
+    oldPrice: 599,
+    price_flash: 479,
+    flash_ends_at: new Date(Date.now() + 24 * 3600 * 1000).toISOString(),
+    images: [
+      'https://m.media-amazon.com/images/I/61rWIP5cTiL._AC_UL320_.jpg',
+      'https://m.media-amazon.com/images/I/71R+4kswv5L._AC_SL1500_.jpg',
+    ],
+    rating: 4.6,
+    reviews: [
+      { author: 'Paul', rating: 5, comment: 'Super écran et santé.' },
+      { author: 'Sophie', rating: 4, comment: 'Design élégant.' },
+    ],
+    options: { bandColor: ['rose', 'argent', 'noir'] },
+  },
+  {
+    id: 'aw-se',
+    slug: 'apple-watch-se',
+    name: 'Apple Watch SE',
+    brand: 'Apple',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg',
+    price: 299,
+    oldPrice: 349,
+    price_flash: null,
+    flash_ends_at: null,
+    images: [
+      'https://m.media-amazon.com/images/I/71YdE55GwjL._AC_SL1500_.jpg',
+      'https://m.media-amazon.com/images/I/61IYXIbHsSL._AC_SL1500_.jpg',
+      'https://m.media-amazon.com/images/I/71C0FcngDTL._AC_SL1500_.jpg'
+    ],
+    rating: 4.5,
+    reviews: [
+      { author: 'Julie', rating: 5, comment: 'Excellent rapport qualité prix.' },
+    ],
+    options: { bandColor: ['bleu', 'argent', 'noir'] },
+  },
+  {
+    id: 'aw-band-milanese',
+    slug: 'apple-watch-band-milanese',
+    name: 'Bracelet Milanais Apple Watch',
+    brand: 'Apple',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg',
+    price: 99,
+    oldPrice: 129,
+    price_flash: 89,
+    flash_ends_at: new Date(Date.now() + 12 * 3600 * 1000).toISOString(),
+    images: [
+      'https://m.media-amazon.com/images/I/818W32LDJyL._AC_SL1500_.jpg',
+      'https://m.media-amazon.com/images/I/514CXZZP9BL._AC_.jpg'
+    ],
+    rating: 4.8,
+    reviews: [
+      { author: 'Lucas', rating: 5, comment: 'Très confortable.' },
+    ],
+    options: { size: ['S', 'M', 'L'] },
+  },
+  {
+    id: 'aw-charger',
+    slug: 'apple-watch-charger',
+    name: 'Chargeur magnétique Apple Watch',
+    brand: 'Apple',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg',
+    price: 39,
+    oldPrice: 49,
+    price_flash: null,
+    flash_ends_at: null,
+    images: [
+      'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MR2A2?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1505844983702',
+      'https://m.media-amazon.com/images/I/51Ocx3HOCQL._AC_SL1500_.jpg',
+      'https://m.media-amazon.com/images/I/61iURPiXWjL._AC_SL1500_.jpg'
+      
+    ],
+    rating: 4.9,
+    reviews: [
+      { author: 'Emma', rating: 5, comment: 'Indispensable et rapide.' },
+    ],
+    options: {},
+  },
+];
 
 const MOCK_OFFERS: Offer[] = [
   { code: 'solo', title: 'Apple Watch Ultra 2', same_price: true, limited_time: false, gifts: [] },
@@ -102,22 +189,22 @@ export async function getHomeSections() {
       kind: 'hero', payload: {
         title: 'Le luxe accessible à tous',
         subtitle: 'Icons last forever',
-        img: MOCK_PRODUCT.images[0],
+  img: (MOCK_PRODUCTS[0]?.images?.[0]) ?? '',
         cta: { label: 'Voir la Watch', href: '/fr/product' },
-        colors: ['#e5e5e5', '#000', '#c2b280'], // exemple
+        colors: ['#e5e5e5', '#000', '#c2b280'],
         variants: [
           { label: 'Unique', price: 29.90, oldPrice: 69.90 },
           { label: 'Achetez 2', price: 49.90, oldPrice: 119.80, badge: '50% OFF' }
         ]
       }
     },
-    { kind: 'grid', payload: { title: 'POUR ELLE', products: [MOCK_PRODUCT, { ...MOCK_PRODUCT, id: 'p2', slug: 'alt-1', name: 'Ball Star LTD', price: 105 }] } },
-    { kind: 'grid', payload: { title: 'POUR LUI', products: [{ ...MOCK_PRODUCT, id: 'p3', slug: 'alt-2', name: 'Ball Star noir', price: 95 }] } },
+    { kind: 'grid', payload: { title: 'POUR ELLE', products: MOCK_PRODUCTS.slice(0, 3) } },
+    { kind: 'grid', payload: { title: 'ACCESSOIRES', products: MOCK_PRODUCTS.slice(3) } },
   ];
 }
 
 export async function getProductBySlug(_slug: string) {
-  return MOCK_PRODUCT;
+  return MOCK_PRODUCTS.find(p => p.slug === _slug) ?? MOCK_PRODUCTS[0];
 }
 export async function getOffersByProduct(_productId: string) {
   return MOCK_OFFERS;

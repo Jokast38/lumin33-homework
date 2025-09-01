@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
 import CartIcon from "@/components/cart/CartIcon";
-import { MOCK_PRODUCT } from "@/lib/supabase";
+import { MOCK_PRODUCTS } from "@/lib/supabase";
 import "./Navbar.css";
+import ProductSearch from "@/components/product/ProductSearch";
 
 export default function Navbar() {
   return (
@@ -14,9 +15,12 @@ export default function Navbar() {
       </div>
       <div className="navbar-logo" >
         <Link href="/fr/home">
-          <img src={MOCK_PRODUCT.logo} alt="Logo" className="navbar-logo-img" />
+          <img src={MOCK_PRODUCTS[0]?.logo ?? ''} alt="Logo" className="navbar-logo-img" />
         </Link>
         LUMIN 33
+      </div>
+      <div className="navbar-search">
+        <ProductSearch onSelect={(p) => window.location.href = `/fr/product/${p.slug}`} />
       </div>
       <div className="navbar-actions">
         <button className="navbar-action-btn" title="Rechercher">

@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import ProductSearch from '@/components/product/ProductSearch';
 import { getHomeSections } from '@/lib/supabase';
 import ProductGrid from '@/components/product/ProductGrid';
+import './banner.css';
 
 export default async function HomePage() {
   const sections = await getHomeSections();
@@ -9,14 +11,14 @@ export default async function HomePage() {
     <main className="mx-auto max-w-6xl p-6 space-y-10">
       {/* Banner vidéo Apple Watch Ultra 2 */}
       <section className="w-full mb-10 flex justify-center items-center">
-        <div style={{ width: '100%'}}>
+        <div className="banner-wrapper">
           <video
             src="https://www.apple.com/105/media/us/watch/2024/f0b51c31-e8a5-44d7-b23d-51bd2858454a/anim/hero/xlarge.mp4"
             autoPlay
             loop
             muted
             playsInline
-            style={{ width: '100%', height: 'auto', borderRadius: '1.2rem', boxShadow: '0 2px 16px rgba(0,0,0,0.12)', border: '1px solid #eee', display: 'block', margin: '0 auto' }}
+            className="banner-video"
           />
         </div>
       </section>
@@ -43,7 +45,7 @@ export default async function HomePage() {
         if (s.kind === 'grid') {
           return (
             <section key={i}>
-              <h2 className="text-2xl font-semibold mb-4">{s.payload.title}</h2>
+              <h2 className="title">{s.payload.title}</h2>
                 <ProductGrid products={s.payload.products ?? []} />
             </section>
           );

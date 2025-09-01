@@ -15,9 +15,7 @@ type Offer = {
   gifts: { name: string; img: string }[];
 };
 
-export default function ProductPageClient({
-  name, price, images, flashEndsAt, offers
-}: {
+export default function ProductPageClient({ name, price, images, flashEndsAt, offers }: {
   name: string;
   price: number;
   images: string[];
@@ -25,6 +23,7 @@ export default function ProductPageClient({
   offers: Offer[];
 }) {
   const { addItem, items, removeItem } = useCart();
+  const [activeImg, setActiveImg] = React.useState(0);
 
   useEffect(() => {
     const event_id = crypto.randomUUID();
@@ -38,17 +37,18 @@ export default function ProductPageClient({
 
   const bundle = useMemo(() => offers.find(o => o.code === 'bundle'), [offers]);
 
-  // Carousel state
-  const [activeImg, setActiveImg] = React.useState(0);
-
   return (
-    <main className="section-general">
-      {/* Partie gauche : images produit + timer */}
-      <section className="flex flex-col items-center sticky top-0 h-[80vh] overflow-y-auto bg-white rounded-2xl shadow-md p-4">
+    <main className="product-detail-grid">
+      <section className="product-detail-images">
+        {flashEndsAt && (
+          <div className="product-timer-banner">
+            <span className="product-timer-label">Offre limitée :</span> <Timer endsAt={flashEndsAt} />
+          </div>
+        )}
         <img
           src={images[activeImg]}
           alt={name}
-          className="rounded-2xl border mb-4 object-cover w-[340px] h-[340px] transition-all duration-200"
+          className="rounded-2xl border mb-4 object-cover product-main-img"
         />
         {images.length > 1 && (
           <div className="option-image">
@@ -64,15 +64,8 @@ export default function ProductPageClient({
             ))}
           </div>
         )}
-        {flashEndsAt && (
-          <div className="timer" style={{ marginTop: '1rem'}}>
-            Offre limitée : <Timer endsAt={flashEndsAt} />
-          </div>
-        )}
       </section>
-
-      {/* Partie droite : infos produit, options, notes, bundles */}
-      <section className="section-option-produit">
+      <section className="product-detail-info">
         <h1 className="text-3xl font-bold mb-2">{name}</h1>
         <div className="flex items-center gap-4 mb-2">
           <span className="text-2xl font-semibold">{price} €</span>
