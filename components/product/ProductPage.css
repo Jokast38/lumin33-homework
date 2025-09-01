@@ -1,3 +1,96 @@
+.product-service-dropdowns {
+  margin-top: 2.5em;
+  margin-bottom: 1.5em;
+}
+.service-dropdown {
+  border-bottom: 1px solid #000000;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+.service-dropdown-header {
+  background: none;
+  border: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.08em;
+  font-weight: 500;
+  color: #222;
+  cursor: pointer;
+  padding: 16px;
+  transition: color 0.15s;
+}
+.service-dropdown-header:hover {
+  color: #030303;
+  background-color: #fff;
+  border-color: #000000 1px;
+}
+.service-dropdown-icon {
+  font-size: 1.25em;
+}
+.service-dropdown-title {
+  flex: 1;
+}
+.service-dropdown-arrow {
+  font-size: 1em;
+  margin-left: 8px;
+}
+.service-dropdown-content {
+  padding: 0.7em 0 0.2em 2.2em;
+  color: #0f0f0f;
+  font-size: 1em;
+  line-height: 1.6;
+}
+.product-reviews-dropdown {
+  background: #fff;
+  padding: 1.2em;
+  margin-bottom: 1.2em;
+}
+.product-reviews-title {
+  font-weight: 600;
+  font-size: 1.15em;
+  margin-bottom: 0.7em;
+  color: #222;
+}
+.product-reviews-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.product-reviews-item {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.7em;
+  margin-bottom: 0.7em;
+}
+.product-reviews-item:last-child {
+  border-bottom: none;
+}
+.product-reviews-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.product-card-rating {
+  font-size: 1.1em;
+  letter-spacing: 1px;
+}
+.star-filled {
+  color: #facc15;
+  font-weight: bold;
+}
+.star-empty {
+  color: #e5e5e5;
+}
+.product-reviews-author {
+  font-weight: 500;
+  color: #222;
+}
+.product-reviews-comment {
+  color: #444;
+  font-size: 0.98em;
+  margin-top: 0.3em;
+}
 .product-timer-banner {
   display: flex;
   align-items: center;
@@ -39,10 +132,13 @@
   object-fit: contain;
   margin-bottom: 1.5rem;
 }
+.section.product-detail-info{
+    padding: 16px;
+    width: 100%;
+}
 .product-detail-info {
-  padding: 2rem 0 2rem 0;
+  padding: 16px;
   width: 100%;
-  max-width: 540px;
 }
 .product-detail-grid {
   display: grid;

@@ -34,7 +34,7 @@ export default function ProductSearch({ onSelect }: { onSelect?: (product: any) 
   }
 
   return (
-    <div className="product-search-container" style={{ position: "relative", maxWidth: 600, margin: "2rem auto" }}>
+    <div className="product-search-container" style={{ backgroundColor: "white", position: "relative", maxWidth: 600, margin: "2rem auto" }}>
       <input
         type="text"
         className="product-search-input"
@@ -42,13 +42,13 @@ export default function ProductSearch({ onSelect }: { onSelect?: (product: any) 
         value={query}
         onChange={handleSearch}
         onFocus={() => setShow(true)}
-        style={{ width: "100%", padding: "0.8em 2.5em 0.8em 1em", borderRadius: "0.8em", border: "1px solid #222", fontSize: "1.1em" }}
+        style={{ width: "100%", padding: "0.8em 2.5em 0.8em 1em", borderRadius: "0.8em", border: "1px solid #0c0c0cff", fontSize: "1.1em", backgroundColor: "white" , color: "#060606ff"}}
       />
-      <span style={{ position: "absolute", right: 40, top: 16, color: "#888" }}>
+      <span style={{ position: "absolute", right: 40, top: 16, color: "#060606ff" }}>
         <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       </span>
       {query && (
-        <span style={{ position: "absolute", right: 12, top: 16, color: "#8a2be2", cursor: "pointer" }} onClick={() => { setQuery(""); setResults([]); }}>
+        <span style={{ position: "absolute", right: 12, top: 16, color: "#c40505ff", cursor: "pointer" }} onClick={() => { setQuery(""); setResults([]); }}>
           X
         </span>
       )}

@@ -23,15 +23,27 @@ export default function BannerScroller() {
         {messages.length > 0 ? (
           <>
             {messages.map((msg, i) => (
-              <span className="mx-8" key={i}>{msg}</span>
+              <span style={{ margin: '0 2rem' }} key={i}>{msg}</span>
             ))}
             {/* Répétition pour effet continu */}
             {messages.map((msg, i) => (
-              <span className="mx-8" key={i + messages.length}>{msg}</span>
+              <span style={{ margin: '0 2rem' }} key={i + messages.length}> {msg} </span>
+            ))}
+
+            {messages.map((msg, i) => (
+              <span style={{ margin: '0 2rem' }} key={i + messages.length * 2}> {msg} </span>
+            ))}
+
+            {messages.map((msg, i) => (
+              <span style={{ margin: '0 2rem' }} key={i + messages.length * 3}> {msg} </span>
+            ))}
+
+            {messages.map((msg, i) => (
+              <span style={{ margin: '0 2rem' }} key={i + messages.length * 4}> {msg} </span>
             ))}
           </>
         ) : (
-          <span className="mx-8">Chargement...</span>
+          <span style={{ margin: '0 2rem' }}>Chargement...</span>
         )}
       </div>
     </div>

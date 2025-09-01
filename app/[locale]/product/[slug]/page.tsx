@@ -16,6 +16,10 @@ export default async function Page({ params }: Props) {
       images={product.images}
       flashEndsAt={product.flash_ends_at ?? undefined}
       offers={offers}
+      options={product.options}
+      description={product.description}
+      rating={product.rating}
+      reviews={product.reviews}
     />
   );
 }

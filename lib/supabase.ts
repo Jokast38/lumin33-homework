@@ -72,7 +72,7 @@ export const MOCK_PRODUCTS: Product[] = [
       { author: 'Max', rating: 4, comment: 'Très robuste, un peu chère.' },
       { author: 'Nina', rating: 5, comment: 'Parfaite pour le trail.' },
     ],
-    options: { bandColor: ['noir', 'sable'] },
+  options: { bandColor: ['noir', 'sable'] },
   },
   {
     id: 'aw-series-9',
@@ -93,7 +93,7 @@ export const MOCK_PRODUCTS: Product[] = [
       { author: 'Paul', rating: 5, comment: 'Super écran et santé.' },
       { author: 'Sophie', rating: 4, comment: 'Design élégant.' },
     ],
-    options: { bandColor: ['rose', 'argent', 'noir'] },
+  options: { bandColor: ['rose', 'argent', 'noir'] },
   },
   {
     id: 'aw-se',
@@ -134,7 +134,10 @@ export const MOCK_PRODUCTS: Product[] = [
     reviews: [
       { author: 'Lucas', rating: 5, comment: 'Très confortable.' },
     ],
-    options: { size: ['S', 'M', 'L'] },
+      options: {
+        bandColor: ['Argent', 'Noir', 'Bleu', 'Gris'],
+        taille: ['42mm (Series 10/41/40/38mm)', '44mm (Series 3 2 1)']
+      },
   },
   {
     id: 'aw-charger',
@@ -198,8 +201,8 @@ export async function getHomeSections() {
         ]
       }
     },
-    { kind: 'grid', payload: { title: 'POUR ELLE', products: MOCK_PRODUCTS.slice(0, 3) } },
-    { kind: 'grid', payload: { title: 'ACCESSOIRES', products: MOCK_PRODUCTS.slice(3) } },
+    { kind: 'grid', payload: { title: 'POUR LES SPORTIFS', products: MOCK_PRODUCTS.slice(0, 3), background:'https://i.pinimg.com/1200x/0f/e0/2b/0fe02b4cb7f1bbc24e96ea1cf5dbf7c9.jpg' } },
+    { kind: 'grid', payload: { title: 'ACCESSOIRES', products: MOCK_PRODUCTS.slice(3), background:'https://i.pinimg.com/1200x/9b/13/8d/9b138dbe7dbc9c039dce3af56aaf6b82.jpg' } },
   ];
 }
 

@@ -11,9 +11,15 @@ export default function CartPage() {
   <div className="cart-empty">Votre panier est vide.</div>
       ) : (
         <>
-          <ul className="cart-list">
+          <ul className="cart-list" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
             {items.map(i => (
-              <li key={i.id} className="cart-list-item">
+              <li key={i.id} className="cart-list-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', width: '100%', maxWidth: '480px', marginBottom: '1rem' }}>
+                <img
+                  src={i.images?.[0] ?? '/default-product.png'}
+                  alt={i.name}
+                  className="cart-product-img"
+                  style={{ width: '48px', height: '48px', objectFit: 'cover', borderRadius: '0.5rem', border: '1px solid #ccc', background: '#f5f5f5' }}
+                />
                 <span className="cart-product-name">{i.name}</span>
                 <button className="cart-qty-btn" onClick={() => addItem({ ...i, qty: 1 })}>+</button>
                 <span>{i.qty}</span>
