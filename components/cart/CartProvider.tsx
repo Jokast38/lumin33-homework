@@ -1,4 +1,5 @@
 'use client';
+import { fbq } from '@/lib/fbq';
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 export type Item = { id: string; name: string; price: number; qty: number; images?: string[] };
@@ -31,22 +32,23 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('cart', JSON.stringify(items));
   }, [items, ready]);
 
-  const addItem = (i: AddableItem) =>
+  const addItem = (i: AddableItem) => {
     setItems(prev => {
-      const normalized: Item = {
-        id: i.id,
-        name: i.name,
-        price: i.price,
-        qty: i.qty ?? 1,
-      };
-      const idx = prev.findIndex(p => p.id === normalized.id);
-      if (idx === -1) return [...prev, normalized];
-      const clone = [...prev];
-      if (clone[idx]) {
-        clone[idx] = { ...clone[idx], qty: clone[idx].qty + normalized.qty };
+      const exists = prev.find(p => p.id === i.id);
+      if (exists) {
+        return prev.map(p => p.id === i.id ? { ...p, qty: (p.qty ?? 1) + (i.qty ?? 1) } : p);
       }
-      return clone;
+      return [...prev, { ...i, qty: i.qty ?? 1 }];
     });
+    // Tracking Meta Pixel AddToCart
+    if (typeof window !== 'undefined' && i) {
+      fbq('track', 'AddToCart', {
+        content_ids: [i.id],
+        value: i.price ?? 0,
+        currency: 'EUR',
+      });
+    }
+  };
 
   const value = useMemo<CartCtx>(() => ({
     isCartReady: ready,

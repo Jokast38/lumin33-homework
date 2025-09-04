@@ -9,6 +9,7 @@ export async function POST(req: NextRequest) {
     return new Response('Meta env missing', { status: 500 });
   }
   const body = await req.json().catch(() => ({}));
+  console.log('Meta API - Body reçu:', JSON.stringify(body, null, 2));
 
   const payload = {
     data: [
@@ -43,6 +44,7 @@ export async function POST(req: NextRequest) {
   });
 
   const text = await res.text();
+  console.log('Meta API - Réponse Facebook:', text);
   return new Response(text, { status: res.status });
 }
 

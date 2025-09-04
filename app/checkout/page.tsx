@@ -1,6 +1,7 @@
 "use client";
 import { useCart } from '@/components/cart/CartProvider';
 import { useState } from 'react';
+import { trackMetaEvent } from '@/lib/metaApi';
 import './checkout.css';
 
 export default function CheckoutPage() {
@@ -24,7 +25,32 @@ export default function CheckoutPage() {
   return (
     <main className="checkout-main">
       <h1 className="checkout-title">Saisissez votre adresse de livraison</h1>
-      <form className="checkout-form" autoComplete="off" onSubmit={e => { e.preventDefault(); setPaid(true); clear(); }}>
+      <form
+        className="checkout-form"
+        autoComplete="off"
+        onSubmit={async e => {
+          e.preventDefault();
+          // Tracking Meta API - Purchase
+          await trackMetaEvent('Purchase', {
+            event: 'Purchase',
+            event_id: `purchase_${Date.now()}`,
+            value: total,
+            currency: 'EUR',
+            contents: items.map(i => ({ id: i.id, quantity: i.qty, item_price: i.price })),
+            email: form.email,
+            phone: form.phone,
+            firstName: form.firstName,
+            lastName: form.lastName,
+            fbp: window._fbp,
+            fbc: window._fbc,
+            client_user_agent: navigator.userAgent,
+            event_source_url: window.location.href,
+            action_source: 'website',
+          });
+          setPaid(true);
+          clear();
+        }}
+      >
         <div className="checkout-form-row">
           <div style={{ flex: 1 }}>
             <label>Prénom</label>

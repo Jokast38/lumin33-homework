@@ -17,7 +17,7 @@ export default async function Page({ params }: Props) {
       flashEndsAt={product.flash_ends_at ?? undefined}
       offers={offers}
       options={product.options}
-    //   description={product.description}
+      //   description={product.description}
       rating={product.rating}
       reviews={product.reviews}
     />
