@@ -2,10 +2,16 @@ import ProductPageClient from '@/components/product/ProductPage';
 import { getOffersByProduct, getProductBySlug } from '@/lib/supabase';
 import { notFound } from 'next/navigation';
 
-type Props = { params: { slug: string } };
+// Define the type for the params prop
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
 
-export default async function Page({ params }: Props) {
-  const product = await getProductBySlug(params.slug);
+export default async function Page({ params }: PageProps) {
+  const { slug } = params;
+  const product = await getProductBySlug(slug);
   if (!product) return notFound();
   const offers = await getOffersByProduct(product.id);
 
