@@ -41,13 +41,63 @@ export default function ProductPageClient({
   const [showReviews, setShowReviews] = React.useState(false);
 
   useEffect(() => {
-    const event_id = crypto.randomUUID();
-    trackPixel('ViewContent', { value: price, currency: 'EUR' }, event_id);
-    fetch('/api/meta/track', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ event: 'ViewContent', event_id, value: price, currency: 'EUR', contents: [{ id: 'apple-watch-ultra-2', quantity: 1, item_price: price }] })
-    });
+    async function trackViewContent() {
+      const event_id = crypto.randomUUID();
+      trackPixel('ViewContent', { value: price, currency: 'EUR' }, event_id);
+      // Récupère fbp et fbc depuis les cookies
+      const getCookie = (name: string) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop()?.split(';').shift();
+        return undefined;
+      };
+  let fbp = getCookie('_fbp');
+  let fbc = getCookie('_fbc');
+  // Fallback : génère une valeur unique si cookie absent
+  if (!fbp) fbp = 'fb.1.' + Date.now() + '.' + Math.floor(Math.random() * 1e10);
+  if (!fbc) fbc = 'fb.1.' + Date.now() + '.' + Math.floor(Math.random() * 1e10);
+      // Optionnel : récupère l'email utilisateur si disponible (exemple via localStorage ou contexte)
+      let email;
+      try {
+        email = localStorage.getItem('user_email') || undefined;
+      } catch {}
+      // Hash SHA-256 côté client
+      async function sha256(text: string) {
+        const buf = new TextEncoder().encode(text.trim().toLowerCase());
+        const hash = await window.crypto.subtle.digest('SHA-256', buf);
+        return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+      }
+      const em = email ? [await sha256(email)] : undefined;
+      // Fallback external_id si aucune info client
+      let external_id = email || undefined;
+      if (!em && !fbp && !fbc) {
+        external_id = 'anon_' + event_id;
+      }
+      fetch('/api/meta/track', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          event: 'ViewContent',
+          event_id,
+          value: price,
+          currency: 'EUR',
+          contents: [{ id: 'apple-watch-ultra-2', quantity: 1, item_price: price }],
+          fbp,
+          fbc,
+          client_user_agent: navigator.userAgent,
+          event_source_url: window.location.href,
+          action_source: 'website',
+          user_data: {
+            em,
+            external_id,
+            fbp,
+            fbc,
+            client_user_agent: navigator.userAgent,
+          },
+        })
+      });
+    }
+    trackViewContent();
   }, [price]);
 
   const bundle = useMemo(() => offers.find(o => o.code === 'bundle'), [offers]);
