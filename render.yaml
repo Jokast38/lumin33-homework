@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: lumin33jk
+    env: node
+    region: frankfurt
+    plan: free
+    buildCommand: "npm ci && npm run build"
+    startCommand: "npm run start"
+    autoDeploy: true
+    envVars:
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://lumin33jk.onrender.com
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: HMAC_SECRET
+        sync: false
+      - key: NEXT_PUBLIC_META_PIXEL_ID
+        sync: false
+      - key: META_PIXEL_ID
+        sync: false
+      - key: META_ACCESS_TOKEN
+        sync: false
+      - key: META_TEST_EVENT_CODE
+        sync: false
+
+  # Cron job pour l'expiration promo (appelle ta route toutes les heures)
+  - type: cron
+    name: expire-flash-prices
+    schedule: "0 * * * *" # toutes les heures
+    env: docker
+    region: frankfurt
+    plan: free
+    command: |
+      curl -s -X POST "https://lumin33jk.onrender.com/api/cron/expire"
