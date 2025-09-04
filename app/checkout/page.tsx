@@ -31,6 +31,15 @@ export default function CheckoutPage() {
         onSubmit={async e => {
           e.preventDefault();
           // Tracking Meta API - Purchase
+          // Récupère fbp et fbc depuis les cookies
+          const getCookie = (name: string) => {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop()?.split(';').shift();
+            return undefined;
+          };
+          const fbp = getCookie('_fbp');
+          const fbc = getCookie('_fbc');
           await trackMetaEvent('Purchase', {
             event: 'Purchase',
             event_id: `purchase_${Date.now()}`,
@@ -41,8 +50,8 @@ export default function CheckoutPage() {
             phone: form.phone,
             firstName: form.firstName,
             lastName: form.lastName,
-            fbp: window._fbp,
-            fbc: window._fbc,
+            fbp,
+            fbc,
             client_user_agent: navigator.userAgent,
             event_source_url: window.location.href,
             action_source: 'website',
