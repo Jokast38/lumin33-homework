@@ -14,6 +14,32 @@ export default function ProductSearch({ onSelect }: { onSelect?: (product: any) 
       setResults([]);
       return;
     }
+    // Tracking Meta API - Search
+    const getCookie = (name: string) => {
+      const val = `; ${document.cookie}`;
+      const parts = val.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop()?.split(';').shift();
+      return undefined;
+    };
+    let fbp = getCookie('_fbp');
+    let fbc = getCookie('_fbc');
+    if (!fbp) fbp = 'fb.1.' + Date.now() + '.' + Math.floor(Math.random() * 1e10);
+    if (!fbc) fbc = 'fb.1.' + Date.now() + '.' + Math.floor(Math.random() * 1e10);
+    fetch('/api/meta/track', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        event: 'Search',
+        event_id: crypto.randomUUID(),
+        search_string: value,
+        fbp,
+        fbc,
+        client_user_agent: navigator.userAgent,
+        event_source_url: window.location.href,
+        action_source: 'website',
+        user_data: { fbp, fbc, client_user_agent: navigator.userAgent }
+      })
+    });
     // Simule une recherche dans les produits des sections home
     const sections = await getHomeSections();
     const products = sections
